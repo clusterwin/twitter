@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "BDBOAuth1RequestOperationManager.h"
+#import "User.h"
 
 @interface TwitterClient : BDBOAuth1RequestOperationManager
 
 + (TwitterClient *)sharedInstance;
+- (void)loginWithCompletion:(void (^)(User *user, NSError *error))completion;
 
 @end
