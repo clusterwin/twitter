@@ -18,6 +18,7 @@
 	[[TwitterClient sharedInstance] loginWithCompletion:^(User *user, NSError *error) {
 		if(user != nil){
 			// MOdally present tweets view
+			NSLog(@"Welcome  to %@", user.name);
 		} else {
 			// Present error view
 		}

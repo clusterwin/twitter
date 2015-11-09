@@ -53,30 +53,6 @@
 -(BOOL)application:(UIApplication *)app openURL:(nonnull NSURL *)url sourceApplication:(nullable NSString *)sourceApplication annotation:(id)annotation{
 	[[TwitterClient sharedInstance] openURL:url];
 	
-	[[TwitterClient sharedInstance] fetchAccessTokenWithPath:@"oauth/access_token" method:@"POST" requestToken:[BDBOAuth1Credential credentialWithQueryString:url.query] success:^(BDBOAuth1Credential *accessToken) {
-		NSLog(@"got the access token!");
-		[[TwitterClient sharedInstance].requestSerializer saveAccessToken:accessToken];
-		[[TwitterClient sharedInstance] GET:@"1.1/account/verify_credentials.json" parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
-			//NSLog(@"Current user: %@", responseObject);
-			User *user = [[User alloc] initWithDictionary:responseObject];
-			NSLog(@"currentUser: %@", user.name);
-		} failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
-			NSLog(@"Failed getting current user");
-		}];
-		
-		[[TwitterClient sharedInstance] GET:@"1.1/statuses/home_timeline.json" parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
-			//NSLog(@"tweets: %@", responseObject);
-			NSArray *tweets = [Tweet tweetsWithArray:responseObject];
-			for (Tweet *tweet in tweets){
-				NSLog(@"tweet: %@, created: %@", tweet.text, tweet.createdAt);
-			}
-		} failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
-			NSLog(@"error getting tweets");
-		}];
-	} failure:^(NSError *error) {
-		NSLog(@"failed to get the access token!");
-	}];
-	
 	return YES;
 }
 
