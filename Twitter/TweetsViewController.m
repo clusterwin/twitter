@@ -1,38 +1,35 @@
 //
-//  LoginViewController.m
+//  TweetsViewController.m
 //  Twitter
 //
-//  Created by Alex Lester on 11/7/15.
+//  Created by Alex Lester on 11/9/15.
 //  Copyright © 2015 Alex Lester. All rights reserved.
 //
 
-#import "LoginViewController.h"
-#import "TwitterClient.h"
 #import "TweetsViewController.h"
+#import "User.h"
+#import "Tweet.h"
+#import "TwitterClient.h"
 
-@interface LoginViewController ()
+
+@interface TweetsViewController ()
 
 @end
 
-@implementation LoginViewController
-- (IBAction)onLogin:(id)sender {
-	[[TwitterClient sharedInstance] loginWithCompletion:^(User *user, NSError *error) {
-		if(user != nil){
-			// MOdally present tweets view
-			NSLog(@"Welcome  to %@", user.name);
-			[self presentViewController:[[TweetsViewController alloc] init] animated:YES
-							 completion:nil];
-
-		} else {
-			// Present error view
-		}
-	}];
+@implementation TweetsViewController
+- (IBAction)onLogout:(id)sender {
+	[User logout];
+	
 }
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+	[[TwitterClient sharedInstance] homeTimeLineWithParams:nil completion:^(NSArray *tweets, NSError *error) {
+		for (Tweet *tweet in tweets){
+			NSLog(@"text: %@", tweet.text);
+		}
+	}];
 }
 
 - (void)didReceiveMemoryWarning {
