@@ -14,9 +14,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *tweeterNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *tweeterHandelLabel;
 @property (weak, nonatomic) IBOutlet UILabel *tweetContentLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *tweetReplyLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *tweetRetweetLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *tweetHeartLabel;
 @property (weak, nonatomic) IBOutlet UITextView *replyTextField;
 
 

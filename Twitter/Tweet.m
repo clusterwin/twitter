@@ -22,7 +22,6 @@
 		NSNumber *ids = dictionary[@"id"];
 		self.idNumber = [NSString stringWithFormat:@"%@",ids];
 		NSLog(self.idNumber);
-
 	}
 	return self;
 }

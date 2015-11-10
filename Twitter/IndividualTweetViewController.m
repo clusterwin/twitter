@@ -17,6 +17,24 @@
 @end
 
 @implementation IndividualTweetViewController
+- (IBAction)onRetweetButtonPush:(id)sender {
+	NSMutableDictionary *params = [[NSMutableDictionary alloc]init];
+	params[@"id"] = self.tweet.idNumber;
+	[[TwitterClient sharedInstance] retweetWithParams:params completion:^(NSDictionary *response, NSError *error) {
+		NSLog(@"Retweeted %@", self.tweet.idNumber);
+	}];
+	
+}
+- (IBAction)onFavoriteButtonPush:(id)sender {
+	NSMutableDictionary *params = [[NSMutableDictionary alloc]init];
+	params[@"id"] = self.tweet.idNumber;
+	[[TwitterClient sharedInstance] favouriteTweetWithParams:params completion:^(NSDictionary *response, NSError *error) {
+		NSLog(@"Favorited %@",self.tweet.idNumber);
+	}];
+}
+
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
