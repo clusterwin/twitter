@@ -11,35 +11,84 @@
 #import "Tweet.h"
 #import "TwitterClient.h"
 #import "TweetTableViewCell.h"
+#import "UIImageView+AFNetworking.h"
 
 
-@interface TweetsViewController ()<UITableViewDataSource, UITableViewDelegate>
+@interface TweetsViewController ()<UITableViewDataSource>
 
-@property (weak, nonatomic) IBOutlet UITableView *tweetTableVIew;
+@property (strong, nonatomic) NSArray *tweets;
+
 @end
 
 @implementation TweetsViewController
 
-- (IBAction)onLogout:(id)sender {
-	[User logout];
-	
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+	
+	UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+	refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Please Wait..."]; //to give the attributedTitle
+	[refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+	[self.tableView addSubview:refreshControl];
+	
 	[[TwitterClient sharedInstance] homeTimeLineWithParams:nil completion:^(NSArray *tweets, NSError *error) {
 		for (Tweet *tweet in tweets){
 			NSLog(@"text: %@", tweet.text);
 		}
+		self.tweets = tweets;
+		[self.tableView reloadData];
 	}];
+	
+    // Do any additional setup after loading the view from its nib.
 	
 	self.tableView.delegate = self;
 	self.tableView.dataSource = self;
+	self.tableView.estimatedRowHeight = 100;
+	self.tableView.rowHeight = UITableViewAutomaticDimension;
 	
-		[self.tableView registerNib:[UINib nibWithNibName:@"TweetTableViewCell" bundle:nil] forCellReuseIdentifier:@"TweetCell"];
+
+	[self.tableView registerNib:[UINib nibWithNibName:@"TweetTableViewCell" bundle:nil] forCellReuseIdentifier:@"TweetCell"];
+	
+	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Sign Out" style:UIBarButtonItemStylePlain target:self action:@selector(onLogout)];
+	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"New" style:UIBarButtonItemStylePlain target:self action:@selector(onNew)];
+	
+	
+	UILabel * titleView = [[UILabel alloc] initWithFrame:CGRectZero];
+	titleView.backgroundColor = [UIColor clearColor];
+	titleView.font = [UIFont boldSystemFontOfSize:16];
+	titleView.shadowColor = [UIColor colorWithWhite:1.0 alpha:1.0];
+	titleView.shadowOffset = CGSizeMake(0.0f, 1.0f);
+	titleView.textColor = [UIColor whiteColor];
+	titleView.text = @"Home";
+	self.navigationItem.titleView = titleView;
+	[titleView sizeToFit];
+	
+	
+	UIColor *twitterBlue = [UIColor colorWithRed:(85/255.0) green:(172/255.0) blue:(238/255.0) alpha:1] ;
+	self.navigationController.navigationBar.barTintColor = twitterBlue;
+	self.navigationController.navigationBar.translucent = NO;
+	self.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
+	self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
+	
+
 	
 	[self.tableView reloadData];
+}
+
+- (void)refreshTableData{
+	[[TwitterClient sharedInstance] homeTimeLineWithParams:nil completion:^(NSArray *tweets, NSError *error) {
+		for (Tweet *tweet in tweets){
+			NSLog(@"text: %@", tweet.text);
+		}
+		self.tweets = tweets;
+		[self.tableView reloadData];
+	}];
+
+}
+
+- (void)refresh:(UIRefreshControl *)refreshControl
+{
+	[self refreshTableData]; //call method
+	[refreshControl endRefreshing];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,14 +102,40 @@
 	if (!cell) {
 		cell = [[TweetTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"TweetCell"];
 	}
-		cell.TweetTextLabel.text = @"Hi I'm a tweet";
-		//cell.delegate = self;
-		return cell;
+	
+	Tweet *tweet = self.tweets[indexPath.row];
+	cell.TweetTextLabel.text = tweet.text;
+	cell.userNameLabel.text = tweet.user.name;
+	NSString *userHandle = [NSString stringWithFormat:@"@%@",(tweet.user.screename)];
+	cell.userHandleLabel.text = userHandle;
+	NSURL *profileImageUrl = [[NSURL alloc] initWithString:tweet.user.profileImageUrl];
+	[cell.profileImageView setImageWithURL:profileImageUrl];
+	
+	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+	[dateFormatter setDateFormat:@"dd/MM/yyyy"];
+	NSString *convertedString = [dateFormatter stringFromDate:tweet.createdAt];
+	
+	cell.dateTimeLabel.text = convertedString;
+	//cell.delegate = self;
+	return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return 100;
+	NSInteger numRows = [self.tweets count];
+	if(numRows > 20){
+		numRows = 20;
+	}
+	return numRows;
 }
+
+- (void)onNew{
+	NSLog(@"Make a new tweet!!!");
+}
+
+- (void)onLogout {
+	[User logout];
+}
+
 
 /*
 #pragma mark - Navigation
