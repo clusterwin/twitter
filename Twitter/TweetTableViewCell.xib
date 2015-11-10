@@ -39,24 +39,36 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalCompressionResistancePriority="749" ambiguous="YES" misplaced="YES" text="Tweet 1" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="58f-lq-uAL">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalCompressionResistancePriority="749" misplaced="YES" text="Tweet 1" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="58f-lq-uAL">
                         <rect key="frame" x="51" y="36" width="260" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Reply" translatesAutoresizingMaskIntoConstraints="NO" id="72M-W6-cKB">
-                        <rect key="frame" x="77" y="77" width="18" height="24"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Reply" translatesAutoresizingMaskIntoConstraints="NO" id="72M-W6-cKB">
+                        <rect key="frame" x="57" y="83" width="16" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="16" id="Ep9-TF-2Rj"/>
+                            <constraint firstAttribute="height" constant="16" id="VvQ-9y-ZAT"/>
+                        </constraints>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Retweet" translatesAutoresizingMaskIntoConstraints="NO" id="9dJ-rd-ArS">
-                        <rect key="frame" x="138" y="77" width="25" height="24"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Retweet" translatesAutoresizingMaskIntoConstraints="NO" id="9dJ-rd-ArS">
+                        <rect key="frame" x="123" y="83" width="16" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="16" id="HqR-li-dHp"/>
+                            <constraint firstAttribute="height" constant="16" id="rml-oL-lWd"/>
+                        </constraints>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="defaultHeart" translatesAutoresizingMaskIntoConstraints="NO" id="8DF-Wb-SOI">
-                        <rect key="frame" x="207" y="77" width="22" height="26.5"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultHeart" translatesAutoresizingMaskIntoConstraints="NO" id="8DF-Wb-SOI">
+                        <rect key="frame" x="198" y="83" width="16" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="KIA-oQ-yvJ"/>
+                            <constraint firstAttribute="width" constant="16" id="nIr-q6-1Bq"/>
+                        </constraints>
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="9dJ-rd-ArS" secondAttribute="bottom" constant="6.5" id="1wz-Zm-sEO"/>
+                    <constraint firstAttribute="bottom" secondItem="9dJ-rd-ArS" secondAttribute="bottom" constant="8.5" id="1wz-Zm-sEO"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ukY-DB-8dd" secondAttribute="bottom" constant="5" id="47U-Df-lw7"/>
                     <constraint firstItem="58f-lq-uAL" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="8YC-Zt-B1M"/>
                     <constraint firstItem="xAO-0q-yp6" firstAttribute="leading" secondItem="WLw-p0-Hvh" secondAttribute="trailing" constant="8" id="8g0-0X-1lT"/>
@@ -67,16 +79,16 @@
                     <constraint firstItem="OCJ-e4-O3e" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="VAa-Vr-BWu"/>
                     <constraint firstItem="xAO-0q-yp6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="YHR-5D-mFp"/>
                     <constraint firstItem="WLw-p0-Hvh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="cD9-p2-nrm"/>
-                    <constraint firstItem="OCJ-e4-O3e" firstAttribute="leading" secondItem="xAO-0q-yp6" secondAttribute="trailing" constant="4" id="eJc-ji-i5D"/>
+                    <constraint firstItem="OCJ-e4-O3e" firstAttribute="leading" secondItem="xAO-0q-yp6" secondAttribute="trailing" constant="8" id="eJc-ji-i5D"/>
                     <constraint firstItem="ukY-DB-8dd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="enW-Jw-7wt"/>
-                    <constraint firstItem="72M-W6-cKB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="77" id="fMa-pz-QFh"/>
-                    <constraint firstItem="8DF-Wb-SOI" firstAttribute="top" secondItem="58f-lq-uAL" secondAttribute="bottom" constant="20.5" id="foc-A0-j2c"/>
+                    <constraint firstItem="72M-W6-cKB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="57" id="fMa-pz-QFh"/>
+                    <constraint firstItem="8DF-Wb-SOI" firstAttribute="top" relation="greaterThanOrEqual" secondItem="58f-lq-uAL" secondAttribute="bottom" constant="5" id="foc-A0-j2c"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="58f-lq-uAL" secondAttribute="bottom" constant="5" id="ltg-8d-qex"/>
-                    <constraint firstItem="8DF-Wb-SOI" firstAttribute="leading" secondItem="9dJ-rd-ArS" secondAttribute="trailing" constant="44" id="ndm-gP-VT2"/>
+                    <constraint firstItem="8DF-Wb-SOI" firstAttribute="leading" secondItem="9dJ-rd-ArS" secondAttribute="trailing" constant="59" id="ndm-gP-VT2"/>
                     <constraint firstAttribute="trailing" secondItem="OCJ-e4-O3e" secondAttribute="trailing" constant="8" id="ojm-1G-gsv"/>
-                    <constraint firstAttribute="bottom" secondItem="8DF-Wb-SOI" secondAttribute="bottom" constant="4" id="olL-3a-RJ5"/>
-                    <constraint firstItem="9dJ-rd-ArS" firstAttribute="leading" secondItem="72M-W6-cKB" secondAttribute="trailing" constant="43" id="v9X-4S-7Op"/>
-                    <constraint firstAttribute="bottom" secondItem="72M-W6-cKB" secondAttribute="bottom" constant="6.5" id="zLz-rx-Tbu"/>
+                    <constraint firstAttribute="bottom" secondItem="8DF-Wb-SOI" secondAttribute="bottom" constant="8.5" id="olL-3a-RJ5"/>
+                    <constraint firstItem="9dJ-rd-ArS" firstAttribute="leading" secondItem="72M-W6-cKB" secondAttribute="trailing" constant="50" id="v9X-4S-7Op"/>
+                    <constraint firstAttribute="bottom" secondItem="72M-W6-cKB" secondAttribute="bottom" constant="8.5" id="zLz-rx-Tbu"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">

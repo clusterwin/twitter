@@ -12,7 +12,8 @@
 #import "TwitterClient.h"
 #import "TweetTableViewCell.h"
 #import "UIImageView+AFNetworking.h"
-
+#import "ComposeViewController.h"
+#import "IndividualTweetViewController.h"
 
 @interface TweetsViewController ()<UITableViewDataSource>
 
@@ -121,21 +122,28 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	NSInteger numRows = [self.tweets count];
-	if(numRows > 20){
-		numRows = 20;
-	}
-	return numRows;
+	return [self.tweets count];
 }
 
 - (void)onNew{
-	NSLog(@"Make a new tweet!!!");
+	ComposeViewController *vc = [[ComposeViewController alloc] init];
+	UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
+	[self presentViewController:nvc animated:YES completion:nil];
 }
 
 - (void)onLogout {
 	[User logout];
 }
 
+// This method is run when the user taps the row in the tableview
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	IndividualTweetViewController *vc = [[IndividualTweetViewController alloc] init];
+
+	UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
+	[self presentViewController:nvc animated:YES completion:nil];
+	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+	[vc setTweet:self.tweets[indexPath.row]];
+}
 
 /*
 #pragma mark - Navigation
