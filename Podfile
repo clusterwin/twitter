@@ -5,5 +5,6 @@
 
 target 'Twitter' do
   pod "BDBOAuth1Manager"
+  pod "AFNetworking"
 end
 

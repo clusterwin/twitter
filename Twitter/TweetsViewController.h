@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@class TweetsViewController;
+
+@protocol TweetsViewController <NSObject>
+
+@end
+
 @interface TweetsViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+
 
 @end
