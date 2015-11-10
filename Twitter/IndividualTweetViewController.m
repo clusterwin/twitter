@@ -8,6 +8,7 @@
 
 #import "IndividualTweetViewController.h"
 #import "UIImageView+AFNetworking.h"
+#import "TwitterClient.h"
 
 @interface IndividualTweetViewController ()
 
@@ -39,6 +40,9 @@
 	
 	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 	[dateFormatter setDateFormat:@"dd/MM/yyyy"];
+	
+	// Set reply ready
+	self.replyTextField.text = self.tweeterHandelLabel.text;
 
 }
 
@@ -47,6 +51,12 @@
 }
 
 - (void)onReply{
+	NSMutableDictionary *params = [[NSMutableDictionary alloc]init];
+	params[@"status"] = self.replyTextField.text;
+	params[@"in_reply_to_status_id"] = self.tweet.idNumber;
+	[[TwitterClient sharedInstance] sendTweetWithParams:params completion:^(NSDictionary *response, NSError *error) {
+		NSLog(@"%@",response);
+	}];
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
 

@@ -10,6 +10,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "User.h"
 #import "IndividualTweetViewController.h"
+#import "TwitterClient.h"
 
 @interface ComposeViewController ()
 
@@ -57,8 +58,14 @@
 		[self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)onSend{
-		[self dismissViewControllerAnimated:YES completion:nil];
+- (void)onSend {
+	NSMutableDictionary *params = [[NSMutableDictionary alloc]init];
+	params[@"status"] = self.tweetInputTextField.text;
+	[[TwitterClient sharedInstance] sendTweetWithParams:params completion:^(NSDictionary *response, NSError *error) {
+		NSLog(@"%@",response);
+	}];
+	 
+	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

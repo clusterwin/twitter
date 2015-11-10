@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IndividualTweetViewController">
             <connections>
+                <outlet property="replyTextField" destination="apK-qg-Dgd" id="7Ky-6n-vgp"/>
                 <outlet property="tweetContentLabel" destination="IaG-jf-McE" id="yCz-Q8-Ma0"/>
                 <outlet property="tweetHeartLabel" destination="2nY-FJ-ZUe" id="h9r-hR-EcZ"/>
                 <outlet property="tweetReplyLabel" destination="LWE-BI-okF" id="QqL-DR-gsS"/>
@@ -75,6 +76,11 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="apK-qg-Dgd">
+                    <rect key="frame" x="0.0" y="197" width="320" height="371"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -86,12 +92,16 @@
                 <constraint firstItem="kht-YJ-A2l" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="RPp-JY-91J"/>
                 <constraint firstItem="LWE-BI-okF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="31" id="Ui5-dF-qaH"/>
                 <constraint firstAttribute="trailing" secondItem="IaG-jf-McE" secondAttribute="trailing" constant="8" id="WwW-lv-faz"/>
+                <constraint firstItem="apK-qg-Dgd" firstAttribute="top" secondItem="2nY-FJ-ZUe" secondAttribute="bottom" constant="24" id="XMp-NK-4HJ"/>
                 <constraint firstItem="LWE-BI-okF" firstAttribute="top" secondItem="gxm-zi-LC4" secondAttribute="bottom" constant="8" id="YAE-eu-wfj"/>
                 <constraint firstItem="IaG-jf-McE" firstAttribute="top" secondItem="kht-YJ-A2l" secondAttribute="bottom" constant="8" id="aIe-Xg-aI3"/>
                 <constraint firstItem="2nY-FJ-ZUe" firstAttribute="leading" secondItem="fna-eM-NoJ" secondAttribute="trailing" constant="59" id="cIu-3x-hNX"/>
                 <constraint firstItem="gxm-zi-LC4" firstAttribute="top" secondItem="IaG-jf-McE" secondAttribute="bottom" constant="8" id="cdx-Fd-x9T"/>
                 <constraint firstItem="kht-YJ-A2l" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="28" id="eUG-Ck-kzq"/>
                 <constraint firstItem="1IV-7F-VL2" firstAttribute="top" secondItem="Im9-a1-6bB" secondAttribute="bottom" constant="4" id="jjH-QS-mAL"/>
+                <constraint firstAttribute="trailing" secondItem="apK-qg-Dgd" secondAttribute="trailing" id="rce-lG-VRr"/>
+                <constraint firstItem="apK-qg-Dgd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="t0X-cW-Zom"/>
+                <constraint firstAttribute="bottom" secondItem="apK-qg-Dgd" secondAttribute="bottom" id="wWj-Gf-rk1"/>
             </constraints>
             <point key="canvasLocation" x="386" y="366"/>
         </view>

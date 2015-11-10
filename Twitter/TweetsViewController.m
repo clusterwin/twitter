@@ -32,9 +32,6 @@
 	[self.tableView addSubview:refreshControl];
 	
 	[[TwitterClient sharedInstance] homeTimeLineWithParams:nil completion:^(NSArray *tweets, NSError *error) {
-		for (Tweet *tweet in tweets){
-			NSLog(@"text: %@", tweet.text);
-		}
 		self.tweets = tweets;
 		[self.tableView reloadData];
 	}];

@@ -55,7 +55,7 @@ NSString * const kTwitterBaseUrl = @"https://api.twitter.com";
 		NSLog(@"got the access token!");
 		[self.requestSerializer saveAccessToken:accessToken];
 		[self GET:@"1.1/account/verify_credentials.json" parameters:nil success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
-			NSLog(@"Current user: %@", responseObject);
+			//NSLog(@"Current user: %@", responseObject);
 			User *user = [[User alloc] initWithDictionary:responseObject];
 			[User setCurrentUser:user];
 			NSLog(@"currentUser: %@", user.name);
@@ -73,10 +73,20 @@ NSString * const kTwitterBaseUrl = @"https://api.twitter.com";
 - (void)homeTimeLineWithParams:(NSDictionary *)params completion:(void (^)(NSArray *, NSError *))completion {
 	[self GET:@"1.1/statuses/home_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject){;
 		NSArray *tweets = [Tweet tweetsWithArray:responseObject];
-		NSLog(@"Tweets: %@",responseObject);
+		//NSLog(@"Tweets: %@",responseObject);
 		completion(tweets, nil);
 	}failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 		completion(nil, error);
+	}];
+}
+
+- (void)sendTweetWithParams:(NSDictionary *)params completion:(void (^)(NSArray *, NSError *))completion {
+	[self POST:@"1.1/statuses/update.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+		NSLog(@"Did post: %@",responseObject);
+		completion(responseObject, nil);
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		completion(nil, error);
+		NSLog(@"Error on post: %@",error);
 	}];
 }
 

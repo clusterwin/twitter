@@ -19,9 +19,10 @@
 		NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
 		formatter.dateFormat = @"EEE MMM d HH:mm:ss Z y";
 		self.createdAt = [formatter dateFromString:createdAtString];
-		
-		
-			
+		NSNumber *ids = dictionary[@"id"];
+		self.idNumber = [NSString stringWithFormat:@"%@",ids];
+		NSLog(self.idNumber);
+
 	}
 	return self;
 }
