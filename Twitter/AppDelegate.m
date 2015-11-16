@@ -12,6 +12,8 @@
 #import "User.h"
 #import "Tweet.h"
 #import "TweetsViewController.h"
+#import "HamburgerViewController.h"
+#import "MenuViewController.h"
 
 @interface AppDelegate ()
 
@@ -22,23 +24,43 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// Override point for customization after application launch.
-	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+	//self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogout) name:UserDidLogoutNotification object:nil];
+	//[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogout) name:UserDidLogoutNotification object:nil];
 	
-	User *user = [User currentUser];
-	if (user != nil){
-		NSLog(@"Welcome %@", user.name);
-		TweetsViewController *vc = [[TweetsViewController alloc] init];
-		UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
-		self.window.rootViewController = nvc;
-	} else {
-		NSLog(@"Not logged in");
-		self.window.rootViewController = [[LoginViewController alloc] init];
-	}
+	//User *user = [User currentUser];
+//	if (user != nil){
+//		NSLog(@"Welcome %@", user.name);
+//		TweetsViewController *vc = [[TweetsViewController alloc] init];
+//		UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
+//		self.window.rootViewController = nvc;
+//	} else {
+//		NSLog(@"Not logged in");
+//		self.window.rootViewController = [[LoginViewController alloc] init];
+//	}
 	
-
-	[self.window makeKeyAndVisible];
+	
+	HamburgerViewController *hamburgerVC = [[HamburgerViewController alloc] init];
+	
+	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+	
+	MenuViewController *menuVC = (MenuViewController *)[storyboard instantiateViewControllerWithIdentifier:@"MenuViewController"];
+	
+	[hamburgerVC setMenuViewController:menuVC];
+	
+	self.window.rootViewController = hamburgerVC;
+	
+	// Hamburger stuffs
+//	HamburgerViewController *hamburgerViewController = [[HamburgerViewController alloc] init];
+//	UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//	MainViewController *mainViewController = [[MainViewController alloc]init];
+//	hamburgerViewController.menuViewController = mainViewController;
+//	self.window.rootViewController = hamburgerViewController;
+//	
+//	
+	//[self.window makeKeyAndVisible];
+	
+	
 	return YES;
 }
 

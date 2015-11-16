@@ -14,10 +14,15 @@
 #import "UIImageView+AFNetworking.h"
 #import "ComposeViewController.h"
 #import "IndividualTweetViewController.h"
+#import "ProfileViewController.h"
+#import "HamburgerViewController.h"
 
 @interface TweetsViewController ()<UITableViewDataSource>
 
 @property (strong, nonatomic) NSArray *tweets;
+@property (strong, nonatomic) ProfileViewController* profileView;
+@property (strong, nonatomic) HamburgerViewController* hamburgerView;
+
 
 @end
 
@@ -67,7 +72,10 @@
 	self.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
 	self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
 	
-
+	
+	// Hamburger menu elements
+	self.profileView = [[ProfileViewController alloc] init];
+	self.hamburgerView = [[HamburgerViewController alloc] init];
 	
 	[self.tableView reloadData];
 }
@@ -141,6 +149,12 @@
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 	[vc setTweet:self.tweets[indexPath.row]];
 }
+
+- (IBAction)onPanGesture:(id)sender {
+	
+	NSLog(@"Got pan gesture!");
+}
+
 
 /*
 #pragma mark - Navigation
