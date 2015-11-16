@@ -48,7 +48,7 @@
 	
 	[hamburgerVC setMenuViewController:menuVC];
 	
-	self.window.rootViewController = hamburgerVC;
+	//self.window.rootViewController = hamburgerVC;
 	
 	// Hamburger stuffs
 //	HamburgerViewController *hamburgerViewController = [[HamburgerViewController alloc] init];

@@ -11,18 +11,21 @@
 @interface HamburgerViewController ()
 @property (weak, nonatomic) IBOutlet UIView *menuView;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftMarginConstraint;
 @property (assign, nonatomic) CGFloat originalLeftMargin;
-
+@property (strong, nonatomic) UIViewController* menuViewController;
 
 @end
 
 @implementation HamburgerViewController
 
-- (void)setView:(UIView *)view {
-	[view layoutIfNeeded];
-	[_menuView addSubview:self.menuViewController.view];
+- (void) setMenuViewController:(MenuViewController *)menuViewController {
+	_menuViewController = menuViewController;
+	[self.view layoutIfNeeded];
+	[self.menuView addSubview:self.menuViewController.view];
 }
+
 - (IBAction)onPanGesture:(UIPanGestureRecognizer *)sender {
 	CGPoint translation = [sender translationInView: self.view];
 	CGPoint velocity = [sender velocityInView:self.view];
@@ -32,18 +35,26 @@
 	} else if( [sender state] == UIGestureRecognizerStateChanged) {
 		self.leftMarginConstraint.constant = self.originalLeftMargin + translation.x;
 	} else if ([sender state] == UIGestureRecognizerStateEnded) {
-		if(velocity.x > 0){
-			self.leftMarginConstraint.constant = self.view.frame.size.width -50;
-		} else {
-			self.leftMarginConstraint.constant = 0;
-		}
-		[self.view layoutIfNeeded];
+		
+		[UIView animateWithDuration:0.3 animations:^{
+			if(velocity.x > 0){
+				self.leftMarginConstraint.constant = self.view.frame.size.width -50;
+			} else {
+				self.leftMarginConstraint.constant = 0;
+			}
+			[self.view layoutIfNeeded];
+		}];
+
+
 	}
+	
+	
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+	
 }
 
 - (void)didReceiveMemoryWarning {
