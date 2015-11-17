@@ -7,11 +7,13 @@
 //
 
 #import "MenuViewController.h"
+#import "TweetsViewController.h"
+#import "ProfileViewController.h"
 
 
 @interface MenuViewController () <UITableViewDataSource, UITableViewDelegate>
-@property UIViewController *greenNavigationController;
-@property UIViewController *blueNavigationController;
+@property UINavigationController *tweets;
+@property UIViewController *profileViewController;
 @property UIViewController *pinkNavigationController;
 @property NSMutableArray *viewControllers;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -31,13 +33,20 @@
 	self.tableView.delegate = self;
 	// Do any additional setup after loading the view.
 	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-	self.greenNavigationController = [storyboard instantiateViewControllerWithIdentifier:@"GreenViewController"];
-	self.blueNavigationController = [storyboard instantiateViewControllerWithIdentifier:@"BlueViewController"];
+	
+	TweetsViewController *vc = [[TweetsViewController alloc] init];
+	UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
+	self.tweets = nvc;
+	
+	ProfileViewController *pvc = [[ProfileViewController alloc] init];
+	UINavigationController *pnvc = [[UINavigationController alloc] initWithRootViewController:pvc];
+	
+	self.profileViewController = pnvc;
 	self.pinkNavigationController = [storyboard instantiateViewControllerWithIdentifier:@"PinkViewController"];
 	
 	self.viewControllers = [[NSMutableArray alloc] init];
-	[self.viewControllers addObject:self.greenNavigationController];
-	[self.viewControllers addObject:self.blueNavigationController];
+	[self.viewControllers addObject:nvc];
+	[self.viewControllers addObject:self.profileViewController];
 	[self.viewControllers addObject:self.pinkNavigationController];
 	NSLog(@"View controllers has size = %lu", (unsigned long)[self.viewControllers count]);
 	
@@ -52,7 +61,7 @@
 	if(!cell){
 		cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MenuCell"];
 	}
-	NSArray *titles = @[@"Green", @"Blue", @"Pink"];
+	NSArray *titles = @[@"Home", @"Profile", @"Mentions"];
 	cell.textLabel.text = titles[indexPath.row];
 	return cell;
 }

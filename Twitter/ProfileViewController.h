@@ -9,5 +9,14 @@
 #import <UIKit/UIKit.h>
 
 @interface ProfileViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIImageView *profileImage;
+@property (weak, nonatomic) IBOutlet UILabel *tweetsTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *followingTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *followersTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *tweetsCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *followingCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *followersCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *userHandleLabel;
 
 @end

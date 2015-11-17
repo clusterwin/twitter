@@ -16,8 +16,6 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftMarginConstraint;
 @property (assign, nonatomic) CGFloat originalLeftMargin;
 
-
-
 @end
 
 @implementation HamburgerViewController

@@ -7,6 +7,8 @@
 //
 
 #import "ProfileViewController.h"
+#import "User.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface ProfileViewController ()
 @property (weak, nonatomic) IBOutlet UIView *profileView;
@@ -18,6 +20,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+	User *sender = [User currentUser];
+	self.userNameLabel.text = sender.name;
+	self.userHandleLabel.text = [NSString stringWithFormat:@"@%@", (sender.screename)];
+	NSURL *profileImageUrl = [[NSURL alloc] initWithString:sender.profileImageUrl];
+	[self.profileImage setImageWithURL:profileImageUrl];
+	self.followersCountLabel.text = sender.followersCount;
+	self.followingCountLabel.text = sender.followingCount;
+	self.tweetsCountLabel.text = sender.tweetsCount;
 }
 
 - (void)didReceiveMemoryWarning {

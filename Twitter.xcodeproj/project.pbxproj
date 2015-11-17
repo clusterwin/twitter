@@ -30,6 +30,8 @@
 		05CA43E11BFA84EC00F95CDE /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05CA43DD1BFA84EC00F95CDE /* ProfileViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		05CA43E51BFAA4D900F95CDE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05CA43E41BFAA4D900F95CDE /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
 		05CA43FF1BFAA74800F95CDE /* HamburgerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CA43FD1BFAA74800F95CDE /* HamburgerViewController.m */; settings = {ASSET_TAGS = (); }; };
+		05CA44041BFAD71800F95CDE /* MentionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CA44021BFAD71800F95CDE /* MentionsViewController.m */; settings = {ASSET_TAGS = (); }; };
+		05CA44051BFAD71800F95CDE /* MentionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05CA44031BFAD71800F95CDE /* MentionsViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		304D7B2C090417688DD84A4B /* libPods-Twitter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A2378AA0024F4975C7C7CC3 /* libPods-Twitter.a */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +73,9 @@
 		05CA43E41BFAA4D900F95CDE /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		05CA43FC1BFAA74800F95CDE /* HamburgerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HamburgerViewController.h; sourceTree = "<group>"; };
 		05CA43FD1BFAA74800F95CDE /* HamburgerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HamburgerViewController.m; sourceTree = "<group>"; };
+		05CA44011BFAD71800F95CDE /* MentionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MentionsViewController.h; sourceTree = "<group>"; };
+		05CA44021BFAD71800F95CDE /* MentionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MentionsViewController.m; sourceTree = "<group>"; };
+		05CA44031BFAD71800F95CDE /* MentionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MentionsViewController.xib; sourceTree = "<group>"; };
 		3C139739B2ADDC1C436B662B /* Pods-Twitter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Twitter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Twitter/Pods-Twitter.debug.xcconfig"; sourceTree = "<group>"; };
 		7A2378AA0024F4975C7C7CC3 /* libPods-Twitter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Twitter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		857BE8E61CA57D3143310390 /* Pods-Twitter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Twitter.release.xcconfig"; path = "Pods/Target Support Files/Pods-Twitter/Pods-Twitter.release.xcconfig"; sourceTree = "<group>"; };
@@ -169,6 +174,9 @@
 				05CA43E41BFAA4D900F95CDE /* Main.storyboard */,
 				05CA43FC1BFAA74800F95CDE /* HamburgerViewController.h */,
 				05CA43FD1BFAA74800F95CDE /* HamburgerViewController.m */,
+				05CA44011BFAD71800F95CDE /* MentionsViewController.h */,
+				05CA44021BFAD71800F95CDE /* MentionsViewController.m */,
+				05CA44031BFAD71800F95CDE /* MentionsViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -259,6 +267,7 @@
 				054597D31BEEAC9E002A0A4C /* LaunchScreen.storyboard in Resources */,
 				05CA43CE1BFA848700F95CDE /* ComposeViewController.xib in Resources */,
 				054597D01BEEAC9E002A0A4C /* Assets.xcassets in Resources */,
+				05CA44051BFAD71800F95CDE /* MentionsViewController.xib in Resources */,
 				05CA43E11BFA84EC00F95CDE /* ProfileViewController.xib in Resources */,
 				055F62F51BEEADFD00CF6093 /* LoginViewController.xib in Resources */,
 			);
@@ -322,6 +331,7 @@
 				05CA43FF1BFAA74800F95CDE /* HamburgerViewController.m in Sources */,
 				056F02881BEED395008E6688 /* User.m in Sources */,
 				05CA43D61BFA84E200F95CDE /* IndividualTweetViewController.m in Sources */,
+				05CA44041BFAD71800F95CDE /* MentionsViewController.m in Sources */,
 				055F62F81BEEB07200CF6093 /* TwitterClient.m in Sources */,
 				054597C81BEEAC9E002A0A4C /* AppDelegate.m in Sources */,
 				05CA43CD1BFA848700F95CDE /* ComposeViewController.m in Sources */,
