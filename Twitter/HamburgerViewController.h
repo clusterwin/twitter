@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MenuViewController.h"
 
 @interface HamburgerViewController : UIViewController
 
+@property (strong, nonatomic) UIViewController *menuViewController;
+@property (strong, nonatomic) UIViewController *contentViewController;
+
 - (void) setMenuViewController:(UIViewController *)menuViewController;
+- (void) setContentViewController:(UIViewController *)contentViewController;
 
 @end

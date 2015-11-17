@@ -24,43 +24,38 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// Override point for customization after application launch.
-	//self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-
-	//[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogout) name:UserDidLogoutNotification object:nil];
+	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	
-	//User *user = [User currentUser];
-//	if (user != nil){
-//		NSLog(@"Welcome %@", user.name);
-//		TweetsViewController *vc = [[TweetsViewController alloc] init];
-//		UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
-//		self.window.rootViewController = nvc;
-//	} else {
-//		NSLog(@"Not logged in");
-//		self.window.rootViewController = [[LoginViewController alloc] init];
-//	}
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userDidLogout) name:UserDidLogoutNotification object:nil];
 	
+	User *user = [User currentUser];
+		if (user != nil){
+			NSLog(@"Welcome %@", user.name);
+			UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+			HamburgerViewController *hamburgerVC = (HamburgerViewController *)[storyboard instantiateViewControllerWithIdentifier:@"HamburgerViewController"];
+			self.window.rootViewController = hamburgerVC;
+			
+			MenuViewController *menuVC = (MenuViewController *)[storyboard instantiateViewControllerWithIdentifier:@"MenuViewController"];
+			[hamburgerVC setMenuViewController:menuVC];
+			[menuVC setHamburgerViewController:hamburgerVC];
+			
+			//TweetsViewController *vc = [[TweetsViewController alloc] init];
+			//UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
+			//self.window.rootViewController = nvc;
+		} else {
+			NSLog(@"Not logged in");
+			self.window.rootViewController = [[LoginViewController alloc] init];
+		}
 	
-	HamburgerViewController *hamburgerVC = [[HamburgerViewController alloc] init];
 	
 	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+	HamburgerViewController *hamburgerVC = (HamburgerViewController *)[storyboard instantiateViewControllerWithIdentifier:@"HamburgerViewController"];
+	self.window.rootViewController = hamburgerVC;
 	
 	MenuViewController *menuVC = (MenuViewController *)[storyboard instantiateViewControllerWithIdentifier:@"MenuViewController"];
-	
 	[hamburgerVC setMenuViewController:menuVC];
-	
-	//self.window.rootViewController = hamburgerVC;
-	
-	// Hamburger stuffs
-//	HamburgerViewController *hamburgerViewController = [[HamburgerViewController alloc] init];
-//	UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//	MainViewController *mainViewController = [[MainViewController alloc]init];
-//	hamburgerViewController.menuViewController = mainViewController;
-//	self.window.rootViewController = hamburgerViewController;
-//	
-//	
-	//[self.window makeKeyAndVisible];
-	
-	
+	[menuVC setHamburgerViewController:hamburgerVC];
+	[self.window makeKeyAndVisible];
 	return YES;
 }
 

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Uch-fB-yXo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <scenes>
-        <!--Hamburger View Controller-->
+        <!--HamburgerViewController-->
         <scene sceneID="G06-Mc-pu1">
             <objects>
-                <viewController storyboardIdentifier="HamburgerViewController" id="Uch-fB-yXo" customClass="HamburgerViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HamburgerViewController" title="HamburgerViewController" id="Uch-fB-yXo" customClass="HamburgerViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QTO-YK-JHG"/>
                         <viewControllerLayoutGuide type="bottom" id="y84-pd-RIy"/>
@@ -142,7 +142,7 @@
                     <view key="view" contentMode="scaleToFill" id="F81-gv-hR9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="0.37" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="5vk-jA-oRH"/>
                 </viewController>

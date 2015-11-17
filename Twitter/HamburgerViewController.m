@@ -7,6 +7,7 @@
 //
 
 #import "HamburgerViewController.h"
+#import "MenuViewController.h"
 
 @interface HamburgerViewController ()
 @property (weak, nonatomic) IBOutlet UIView *menuView;
@@ -14,7 +15,8 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftMarginConstraint;
 @property (assign, nonatomic) CGFloat originalLeftMargin;
-@property (strong, nonatomic) UIViewController* menuViewController;
+
+
 
 @end
 
@@ -24,6 +26,22 @@
 	_menuViewController = menuViewController;
 	[self.view layoutIfNeeded];
 	[self.menuView addSubview:self.menuViewController.view];
+}
+
+-(void) setContentViewController:(UIViewController *)contentViewController {
+	_contentViewController = contentViewController;
+	[self.view layoutIfNeeded];
+	
+	//Can remove old views here if desired.
+	
+	[self.contentViewController willMoveToParentViewController:self];
+	[self.contentView addSubview:self.contentViewController.view];
+	[self.contentViewController didMoveToParentViewController:self];
+	
+	[UIView animateWithDuration:0.3 animations:^{
+		self.leftMarginConstraint.constant = 0;
+		[self.view layoutIfNeeded];
+	}];
 }
 
 - (IBAction)onPanGesture:(UIPanGestureRecognizer *)sender {

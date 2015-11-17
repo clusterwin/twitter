@@ -20,6 +20,9 @@
 
 @implementation MenuViewController
 
+- (void) setHamburgerViewController:(HamburgerViewController *)hamburgerViewController {
+	_hamburgerViewController = hamburgerViewController;
+}
 
 
 - (void)viewDidLoad {
@@ -57,6 +60,14 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	[tableView deselectRowAtIndexPath:indexPath animated:TRUE];
+	[self.hamburgerViewController setContentViewController:_viewControllers[indexPath.row]];
+		
+ }
 
 /*
 #pragma mark - Navigation

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HamburgerViewController.h"
 
 @interface MenuViewController : UIViewController
+
+@property (strong, nonatomic) HamburgerViewController *hamburgerViewController;
 
 @end
