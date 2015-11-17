@@ -16,13 +16,11 @@
 #import "IndividualTweetViewController.h"
 #import "ProfileViewController.h"
 #import "HamburgerViewController.h"
+#import "ProfileButton.h"
 
 @interface TweetsViewController ()<UITableViewDataSource>
 
 @property (strong, nonatomic) NSArray *tweets;
-@property (strong, nonatomic) ProfileViewController* profileView;
-@property (strong, nonatomic) HamburgerViewController* hamburgerView;
-
 
 @end
 
@@ -72,10 +70,7 @@
 	self.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
 	self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
 	
-	
-	// Hamburger menu elements
-	self.profileView = [[ProfileViewController alloc] init];
-	self.hamburgerView = [[HamburgerViewController alloc] init];
+
 	
 	[self.tableView reloadData];
 }
@@ -123,7 +118,25 @@
 	
 	cell.dateTimeLabel.text = convertedString;
 	//cell.delegate = self;
+	
+	
+	//Click profile picture
+	ProfileButton *showProfileButton = [[ProfileButton alloc] initWithFrame:cell.profileImageView.frame];
+	showProfileButton.user = tweet.user;
+	[showProfileButton addTarget:self action:@selector(showProfile:) forControlEvents:UIControlEventAllTouchEvents];
+	[cell addSubview:showProfileButton];
+	
+	
+	
 	return cell;
+}
+
+- (void)showProfile:(id)sender {
+	ProfileButton *buttonClicked = (ProfileButton *)sender;
+	ProfileViewController *vc = [[ProfileViewController alloc] init];
+	[vc setUser:buttonClicked.user];
+	UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
+	[self presentViewController:nvc animated:YES completion:nil];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -150,10 +163,6 @@
 	[vc setTweet:self.tweets[indexPath.row]];
 }
 
-- (IBAction)onPanGesture:(id)sender {
-	
-	NSLog(@"Got pan gesture!");
-}
 
 
 /*

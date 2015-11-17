@@ -22,7 +22,6 @@ NSString * const UserDidLogoutNotification = @"UserDidLogoutNotification";
 
 - (id)initWithDictionary:(NSDictionary *)dictionary {
 	self = [super init];
-	NSLog(@"%@",dictionary);
 	if (self) {
 		self.dictionary = dictionary;
 		self.name = dictionary[@"name"];

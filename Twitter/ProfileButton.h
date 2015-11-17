@@ -1,5 +1,5 @@
 //
-//  MentionsViewController.h
+//  ProfileButton.h
 //  Twitter
 //
 //  Created by Alex Lester on 11/16/15.
@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "User.h"
 
-@interface MentionsViewController : UIViewController
+@interface ProfileButton : UIButton
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) User* user;
 
 @end

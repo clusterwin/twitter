@@ -60,11 +60,7 @@
 			}
 			[self.view layoutIfNeeded];
 		}];
-
-
 	}
-	
-	
 }
 
 - (void)viewDidLoad {

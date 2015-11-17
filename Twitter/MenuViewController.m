@@ -9,6 +9,7 @@
 #import "MenuViewController.h"
 #import "TweetsViewController.h"
 #import "ProfileViewController.h"
+#import "MentionsViewController.h"
 
 
 @interface MenuViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -40,12 +41,14 @@
 	
 	ProfileViewController *pvc = [[ProfileViewController alloc] init];
 	UINavigationController *pnvc = [[UINavigationController alloc] initWithRootViewController:pvc];
-	
 	self.profileViewController = pnvc;
-	self.pinkNavigationController = [storyboard instantiateViewControllerWithIdentifier:@"PinkViewController"];
+	
+	MentionsViewController *mvc = [[MentionsViewController alloc] init];
+		UINavigationController *mnvc = [[UINavigationController alloc] initWithRootViewController:mvc];
+	self.pinkNavigationController = mnvc;
 	
 	self.viewControllers = [[NSMutableArray alloc] init];
-	[self.viewControllers addObject:nvc];
+	[self.viewControllers addObject:self.tweets];
 	[self.viewControllers addObject:self.profileViewController];
 	[self.viewControllers addObject:self.pinkNavigationController];
 	NSLog(@"View controllers has size = %lu", (unsigned long)[self.viewControllers count]);

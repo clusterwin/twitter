@@ -80,6 +80,16 @@ NSString * const kTwitterBaseUrl = @"https://api.twitter.com";
 	}];
 }
 
+- (void)mentionsWithParams:(NSDictionary *)params completion:(void (^)(NSArray *, NSError *))completion {
+	[self GET:@"/1.1/statuses/mentions_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject){;
+		NSArray *tweets = [Tweet tweetsWithArray:responseObject];
+		//NSLog(@"Tweets: %@",responseObject);
+		completion(tweets, nil);
+	}failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		completion(nil, error);
+	}];
+}
+
 - (void)sendTweetWithParams:(NSDictionary *)params completion:(void (^)(NSArray *response, NSError *error))completion {
 	[self POST:@"1.1/statuses/update.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
 		NSLog(@"Did post: %@",responseObject);
@@ -111,7 +121,5 @@ NSString * const kTwitterBaseUrl = @"https://api.twitter.com";
 		NSLog(@"Error on post: %@",error);
 	}];
 }
-
-
 
 @end

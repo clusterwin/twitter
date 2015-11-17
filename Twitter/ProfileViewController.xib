@@ -83,15 +83,31 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="KK5-7M-2qu" firstAttribute="centerX" secondItem="u19-KV-eQd" secondAttribute="centerX" id="NuN-bl-xxA"/>
+                                    </constraints>
                                 </stackView>
                             </subviews>
                         </stackView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="User Handle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dNc-EK-yq5">
+                        <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="m5U-kY-xrw">
                             <rect key="frame" x="114" y="195" width="95" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Mqm-av-fGY">
+                                    <rect key="frame" x="0.0" y="0.0" width="95" height="21"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="User Handle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dNc-EK-yq5">
+                                            <rect key="frame" x="0.0" y="0.0" width="95" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="dNc-EK-yq5" firstAttribute="centerX" secondItem="Mqm-av-fGY" secondAttribute="centerX" id="ab7-1A-Pqi"/>
+                                    </constraints>
+                                </stackView>
+                            </subviews>
+                        </stackView>
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -99,9 +115,9 @@
                         <constraint firstItem="9eO-ka-Jpl" firstAttribute="leading" secondItem="h5h-7S-vdc" secondAttribute="trailing" constant="46" id="2qd-fe-Tvm"/>
                         <constraint firstItem="lRI-1x-ZaQ" firstAttribute="top" secondItem="9eO-ka-Jpl" secondAttribute="bottom" constant="8" id="72P-qi-kte"/>
                         <constraint firstItem="Rm6-yF-FFT" firstAttribute="top" secondItem="h5h-7S-vdc" secondAttribute="bottom" constant="7" id="7qw-CE-TZW"/>
-                        <constraint firstItem="dNc-EK-yq5" firstAttribute="centerX" secondItem="Gbl-6g-wRZ" secondAttribute="centerX" id="U6m-RR-Nvu"/>
                         <constraint firstItem="afs-iL-0R8" firstAttribute="leading" secondItem="9eO-ka-Jpl" secondAttribute="trailing" constant="24" id="WZp-sj-dvc"/>
                         <constraint firstItem="lRI-1x-ZaQ" firstAttribute="leading" secondItem="Rm6-yF-FFT" secondAttribute="trailing" constant="94" id="ahT-Je-HFx"/>
+                        <constraint firstItem="LOl-4u-n3J" firstAttribute="centerX" secondItem="Gbl-6g-wRZ" secondAttribute="centerX" id="fAS-Pk-qEX"/>
                         <constraint firstItem="i1p-Qv-qEs" firstAttribute="centerX" secondItem="Gbl-6g-wRZ" secondAttribute="centerX" id="mhy-Dp-eg2"/>
                         <constraint firstItem="kvO-9J-XMb" firstAttribute="top" secondItem="afs-iL-0R8" secondAttribute="bottom" constant="8" id="tFh-HA-cAS"/>
                     </constraints>
