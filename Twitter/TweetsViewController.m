@@ -14,6 +14,9 @@
 #import "UIImageView+AFNetworking.h"
 #import "ComposeViewController.h"
 #import "IndividualTweetViewController.h"
+#import "ProfileViewController.h"
+#import "HamburgerViewController.h"
+#import "ProfileButton.h"
 
 @interface TweetsViewController ()<UITableViewDataSource>
 
@@ -115,7 +118,25 @@
 	
 	cell.dateTimeLabel.text = convertedString;
 	//cell.delegate = self;
+	
+	
+	//Click profile picture
+	ProfileButton *showProfileButton = [[ProfileButton alloc] initWithFrame:cell.profileImageView.frame];
+	showProfileButton.user = tweet.user;
+	[showProfileButton addTarget:self action:@selector(showProfile:) forControlEvents:UIControlEventAllTouchEvents];
+	[cell addSubview:showProfileButton];
+	
+	
+	
 	return cell;
+}
+
+- (void)showProfile:(id)sender {
+	ProfileButton *buttonClicked = (ProfileButton *)sender;
+	ProfileViewController *vc = [[ProfileViewController alloc] init];
+	[vc setUser:buttonClicked.user];
+	UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
+	[self presentViewController:nvc animated:YES completion:nil];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -141,6 +162,8 @@
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 	[vc setTweet:self.tweets[indexPath.row]];
 }
+
+
 
 /*
 #pragma mark - Navigation

@@ -4,9 +4,9 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TweetsViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MentionsViewController">
             <connections>
-                <outlet property="tableView" destination="SHt-7c-7Ow" id="jUb-wW-3gI"/>
+                <outlet property="tableView" destination="5ab-xR-3L3" id="jNW-8h-3zc"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -15,20 +15,13 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SHt-7c-7Ow">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5ab-xR-3L3">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <gestureRecognizers/>
-            <constraints>
-                <constraint firstAttribute="bottom" secondItem="SHt-7c-7Ow" secondAttribute="bottom" id="2rH-hB-u09"/>
-                <constraint firstAttribute="trailing" secondItem="SHt-7c-7Ow" secondAttribute="trailing" id="EKX-yA-3q3"/>
-                <constraint firstItem="SHt-7c-7Ow" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Zp7-mm-eTc"/>
-                <constraint firstItem="SHt-7c-7Ow" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="pnJ-fZ-8zA"/>
-            </constraints>
-            <point key="canvasLocation" x="381" y="366"/>
+            <point key="canvasLocation" x="409" y="366"/>
         </view>
     </objects>
 </document>
